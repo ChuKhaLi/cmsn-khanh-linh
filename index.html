@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 HAPPY BIRTHDAY KHÁNH LINH! 🎉</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Bangers&family=Impact&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Floating Party Elements -->
+    <div id="party-elements-container"></div>
+    <div id="confetti-container"></div>
+    <div class="cartoon-cake-mascot"></div>
+
+    <!-- Theme-specific Particle Containers -->
+    <div id="harry-potter-particles"></div>
+    <div id="conan-particles"></div>
+    <div id="aot-particles"></div>
+    <!-- Loader -->
+    <div id="loader" class="loader">
+        <div class="cake">
+            <div class="plate"></div>
+            <div class="layer layer-bottom"></div>
+            <div class="layer layer-middle"></div>
+            <div class="layer layer-top"></div>
+            <div class="icing"></div>
+            <div class="drip drip1"></div>
+            <div class="drip drip2"></div>
+            <div class="drip drip3"></div>
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+        </div>
+        <p class="loading-text">PREPARING THE MEMES...</p>
+    </div>
+
+    <!-- 1. Landing Portal -->
+    <div id="landing-portal" class="portal">
+        <canvas id="particle-canvas"></canvas>
+        <div class="portal-content">
+            <h1 class="portal-title">WARNING: EXTREME BIRTHDAY FUN AHEAD!</h1>
+            <p>Are you ready to party, Khánh Linh?!</p>
+            <button id="enter-button" class="enter-btn">LET'S GOOO!</button>
+        </div>
+    </div>
+
+    <div id="main-content" class="hidden">
+        <!-- 2. Hero Section -->
+        <header id="hero-section" class="hero-section">
+            <h1 class="main-birthday-greeting">HAPPY BIRTHDAY KHÁNH LINH!</h1>
+            <div class="birthday-meta">
+                <div id="age-counter" class="age-counter">LEVEL <span id="age-value">--</span> UNLOCKED!</div>
+                <div id="birthday-countdown" class="birthday-countdown">
+                    <div class="timer-unit">
+                        <span class="timer-value" data-unit="days">0</span>
+                        <span class="timer-label">Days</span>
+                    </div>
+                    <div class="timer-unit">
+                        <span class="timer-value" data-unit="hours">0</span>
+                        <span class="timer-label">Hours</span>
+                    </div>
+                    <div class="timer-unit">
+                        <span class="timer-value" data-unit="minutes">0</span>
+                        <span class="timer-label">Minutes</span>
+                    </div>
+                    <div class="timer-unit">
+                        <span class="timer-value" data-unit="seconds">0</span>
+                        <span class="timer-label">Seconds</span>
+                    </div>
+                </div>
+                <div id="timer-particles"></div>
+            </div>
+        </header>
+
+        <main>
+            <!-- 3. Theme Selector -->
+            <section id="theme-selector" class="theme-selector-section reveal-on-scroll">
+                <h2 class="section-title">CHOOSE YOUR MEME ADVENTURE</h2>
+                <div class="theme-buttons">
+                    <button class="theme-btn active" data-theme="harry-potter">Harry Potter</button>
+                    <button class="theme-btn" data-theme="conan">Detective Conan</button>
+                    <button class="theme-btn" data-theme="attack-on-titan">Attack on Titan</button>
+                </div>
+            </section>
+
+            <!-- Themed Content Sections -->
+            <div id="themed-content">
+                <!-- Harry Potter Section -->
+                <section id="harry-potter-section" class="themed-section">
+                    <div class="section-background"></div>
+                    <div class="section-content comic-panel">
+                        <h2 class="theme-title">You're a Birthday Wizard, Khánh Linh!</h2>
+                        <p>Party spells incoming! Wingardium Mimosa!</p>
+                        <div class="animated-cake"></div>
+                    </div>
+                </section>
+
+                <!-- Detective Conan Section -->
+                <section id="conan-section" class="themed-section">
+                    <div class="section-background"></div>
+                    <div class="section-content comic-panel">
+                        <h2 class="theme-title">Case: Who Ate the Cake?!</h2>
+                        <p>Detective Conan is on the case! The culprit is... probably you.</p>
+                        <div class="animated-cake"></div>
+                    </div>
+                </section>
+
+                <!-- Attack on Titan Section -->
+                <section id="aot-section" class="themed-section">
+                    <div class="section-background"></div>
+                    <div class="section-content comic-panel">
+                        <h2 class="theme-title">Attack on Birthday Cake!</h2>
+                        <p>"On that day, mankind received a grim reminder... that it's Khánh Linh's birthday!"</p>
+                        <div class="animated-cake"></div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 5. Memory Gallery -->
+            <section id="memory-gallery" class="memory-gallery reveal-on-scroll">
+                <h3 class="section-title">MEME-IFIED MEMORY LANE</h3>
+                <div id="image-gallery" class="gallery-grid">
+                    <!-- Meme-ified Images will be dynamically loaded here -->
+                </div>
+            </section>
+
+            <!-- Lightbox for Gallery -->
+            <div id="lightbox">
+                <span id="lightbox-close">&times;</span>
+                <img id="lightbox-img" src="">
+                <div id="lightbox-caption" class="meme-font"></div>
+            </div>
+
+            <!-- 6. Funny Video Showcase -->
+            <section id="video-showcase" class="video-showcase reveal-on-scroll">
+                <h3 class="section-title">KHÁNH LINH'S FUNNIEST MOMENTS</h3>
+                <div id="video-player-container" class="video-container">
+                    <video id="custom-video" src="assets/videos/funny/VID_20170724_180509.mp4" playsinline></video>
+                    <div class="video-controls">
+                        <button id="play-pause-btn" aria-label="Play/Pause"><i class="fas fa-play"></i></button>
+                        <button id="replay-cringe-btn" class="meme-btn">REPLAY THE CRINGE</button>
+                    </div>
+                </div>
+                <div class="meme-reactions">
+                    <button class="reaction-btn" data-reaction="laugh">😂</button>
+                    <button class="reaction-btn" data-reaction="rofl">🤣</button>
+                    <button class="reaction-btn" data-reaction="skull">💀</button>
+                    <button class="reaction-btn" data-reaction="fire">🔥</button>
+                </div>
+            </section>
+            
+            <!-- 7. Interactive Games -->
+            <section id="interactive-games" class="interactive-games reveal-on-scroll">
+                <h3 class="section-title">PARTY MINI-GAMES!</h3>
+                <div class="games-container">
+                    <div id="candle-game" class="game">
+                        <h4>Blow Out The Candle!</h4>
+                        <p>(Click the flame!)</p>
+                        <div class="cake-container">
+                            <div class="cake-base"></div>
+                            <div class="cake-icing"></div>
+                            <div class="candle-stick" data-candle="1"></div>
+                            <div class="candle-stick" data-candle="2"></div>
+                            <div class="candle-stick" data-candle="3"></div>
+                            <div class="candle-stick" data-candle="4"></div>
+                            <div class="flame-wrapper">
+                                <div class="flame-outer">
+                                    <div class="flame-inner"></div>
+                                </div>
+                                <div class="smoke"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="balloon-pop-game" class="game">
+                        <h4>Pop The Balloons!</h4>
+                        <div class="balloon-area"></div>
+                    </div>
+                    <div id="click-counter-game" class="game">
+                        <h4>Wish HBD Counter!</h4>
+                        <button id="hbd-button" class="meme-btn">WISH HAPPY BIRTHDAY!</button>
+                        <p>You've wished <span id="hbd-count">0</span> times!</p>
+                    </div>
+                </div>
+                <div id="hidden-cake-area"></div>
+            </section>
+
+            <!-- 8. Meme Messages -->
+            <section id="meme-messages" class="meme-messages reveal-on-scroll">
+                 <h3 class="section-title">A Wise Meme Once Said...</h3>
+                 <div class="message-grid">
+                    <p class="meme-box">Another year older, another year wiser... JK still the same!</p>
+                    <p class="meme-box">Age is just a number... a really BIG number now!</p>
+                    <p class="meme-box">Birthdays are nature's way of telling us to eat more cake!</p>
+                 </div>
+            </section>
+
+            <!-- 9. Music Section -->
+            <section id="music-section" class="music-section reveal-on-scroll">
+                <h3 class="section-title">🎵 PARTY PLAYLIST 🎵</h3>
+                <p>The official party playlist is below. It should start automatically!</p>
+            </section>
+
+            <!-- 10. Grand Finale -->
+            <footer id="grand-finale" class="grand-finale">
+                <h2 class="finale-title">PARTY NEVER STOPS!</h2>
+                <button id="surprise-btn" class="enter-btn">SURPRISE!</button>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Easter Egg Hints -->
+    <button id="hint-button" class="hint-button hidden">?</button>
+    <div id="hint-modal" class="hint-modal hidden">
+        <div class="hint-modal-content">
+            <span id="hint-modal-close" class="close-button">&times;</span>
+            <h2>Secret Hints</h2>
+            <p>Secrets Found: <span id="secrets-found">0</span>/<span id="secrets-total">7</span></p>
+            <ul>
+                <li>"Try the famous cheat code from old games... ↑↑↓↓..."</li>
+                <li>"Click the birthday girl's name multiple times for a surprise!"</li>
+                <li>"Type the magic word that starts with 'b' and ends with 'day'"</li>
+                <li>"Look for hidden presents in the photos"</li>
+                <li>"Some balloons hide special surprises"</li>
+                <li>"A certain combination of themes might unlock something..."</li>
+                <li>"The cake's candles hold a pattern."</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Floating Music Player -->
+    <div id="floating-music-player" class="floating-music-player">
+        <div class="player-header">
+            <span>Now Playing...</span>
+            <button id="toggle-player-btn">-</button>
+        </div>
+        <div class="player-body">
+            <div class="spotify-embed-wrapper">
+                <iframe id="spotify-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/1ksb2CCSSuCuu4TdoJp5cH?utm_source=generator&autoplay=1" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <div id="play-overlay" class="play-overlay">
+                <button id="manual-play-btn">▶️</button>
+            </div>
+            <div class="volume-controls">
+                <i class="fas fa-volume-down"></i>
+                <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="1">
+                <i class="fas fa-volume-up"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

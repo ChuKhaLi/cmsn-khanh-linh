@@ -1,0 +1,1250 @@
+/* styles.css */
+/* KHÁNH LINH'S EPIC MEME BIRTHDAY BASH! */
+
+/* 1. GLOBAL STYLES & FONT IMPORTS */
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Bangers&family=Impact&display=swap');
+
+:root {
+    --party-pink: #FF69B4;
+    --party-yellow: #FFD700;
+    --party-blue: #00FFFF;
+    --party-purple: #9370DB;
+    --dark-bg: #1a1a3a;
+    --light-text: #f0f0f0;
+    --impact-font: 'Impact', Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    --comic-font: 'Comic Neue', cursive;
+    --bangers-font: 'Bangers', cursive;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--comic-font);
+    line-height: 1.6;
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    overflow-x: hidden;
+    cursor: url('assets/cursors/party-popper.png'), auto;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: #1a1a3a; }
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, var(--party-pink), var(--party-yellow));
+    border-radius: 10px;
+}
+
+/* 2. TYPOGRAPHY & GENERAL STYLES */
+.section-title {
+    font-family: var(--bangers-font);
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--party-yellow);
+    text-shadow: 4px 4px 0px #000, -2px -2px 0px var(--party-pink);
+    letter-spacing: 3px;
+}
+.hidden { display: none !important; }
+.meme-font { font-family: var(--impact-font) !important; text-transform: uppercase; }
+
+/* 3. LOADER */
+.loader {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: #111; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; z-index: 9999;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+.loading-text { margin-top: 20px; font-family: var(--bangers-font); color: #fff; font-size: 2rem; }
+/* Cake styles from original can be kept, they are fine */
+.cake{position:relative;width:150px;height:150px}.plate{width:150px;height:20px;background:#ccc;border-radius:50%;position:absolute;bottom:0}.layer{position:absolute;width:120px;height:40px;background:#f2d7d5;left:15px;border-radius:10px 10px 0 0}.layer-middle{bottom:20px}.layer-top{bottom:60px}.icing{position:absolute;bottom:100px;left:15px;width:120px;height:20px;background:var(--party-pink);border-radius:50% / 10px}.drip{position:absolute;width:15px;height:25px;background:var(--party-pink);border-radius:0 0 50% 50%;top:10px}.drip1{left:20px}.drip2{left:50px;height:30px}.drip3{left:85px}.candle{position:absolute;width:10px;height:30px;background:#fff;bottom:120px;left:70px}.flame{position:absolute;width:10px;height:15px;background:orange;border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;top:-15px;animation:flicker 1.5s infinite}@keyframes flicker{0%,100%{transform:scaleY(1);opacity:1}50%{transform:scaleY(.95);opacity:.8}}
+
+/* 4. LANDING PORTAL */
+.portal {
+    height: 100vh; display: flex; justify-content: center; align-items: center; text-align: center;
+    background: linear-gradient(135deg, #ff3366, #ffcc33, #33ccff, #9933ff);
+    background-size: 400% 400%; animation: gradientAnimation 10s ease infinite;
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 10000;
+}
+#particle-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.7; }
+.portal-content { z-index: 2; padding: 20px; }
+.portal-title {
+    font-family: var(--bangers-font); font-size: 5rem; color: white;
+    text-shadow: 5px 5px 0px rgba(0,0,0,0.7);
+}
+.portal-content p { font-family: var(--comic-font); font-size: 1.8rem; color: #fff; }
+.enter-btn {
+    padding: 15px 35px; font-size: 1.5rem; font-family: var(--bangers-font);
+    background: linear-gradient(45deg, var(--party-pink), var(--party-yellow));
+    color: black; border: 3px solid black; border-radius: 15px;
+    cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; margin-top: 30px;
+    box-shadow: 5px 5px 0px black;
+}
+.enter-btn:hover { transform: scale(1.1) rotate(-5deg); box-shadow: 10px 10px 0px var(--party-purple); }
+@keyframes gradientAnimation{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+/* 5. HERO SECTION */
+.hero-section {
+    min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 40px 20px;
+    background: url('assets/backgrounds/party-bg.gif'); background-size: cover;
+    position: relative;
+}
+.main-birthday-greeting {
+    font-family: var(--bangers-font); font-size: 8rem; color: var(--party-yellow);
+    text-shadow: 6px 6px 0px #000, -3px -3px 0px var(--party-pink);
+    animation: bounce 1s ease infinite;
+}
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+.birthday-meta { display: flex; gap: 30px; margin-top: 20px; }
+.age-counter, .birthday-countdown {
+    font-family: var(--comic-font); font-size: 2rem; color: white;
+    background: var(--party-purple); padding: 10px 20px; border-radius: 10px;
+    border: 3px solid black; box-shadow: 4px 4px 0 black;
+}
+
+/* 6. THEME SELECTOR */
+.theme-selector-section {
+    padding: 20px; background: var(--dark-bg); text-align: center;
+    position: sticky; top: 0; z-index: 100;
+    border-bottom: 5px dashed var(--party-yellow);
+}
+.theme-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.theme-btn {
+    padding: 12px 25px; font-family: var(--bangers-font); font-size: 1.8rem; letter-spacing: 1px;
+    border: 3px solid var(--party-pink); background-color: transparent; color: var(--party-pink);
+    border-radius: 10px; cursor: pointer; transition: all 0.3s ease;
+}
+.theme-btn:hover, .theme-btn.active {
+    background-color: var(--party-pink); color: black;
+    box-shadow: 0 0 20px var(--party-pink); transform: translateY(-5px) rotate(3deg);
+}
+
+/* 7. THEMED CONTENT & COMIC STYLE */
+.themed-section {
+    min-height: 90vh; padding: 100px 5%; position: relative; overflow: hidden;
+    align-items: center; justify-content: center; text-align: center;
+    opacity: 0; transition: opacity 0.8s ease-in-out, visibility 0.8s;
+    visibility: hidden; display: none;
+}
+.themed-section.active { opacity: 1; visibility: visible; display: flex; }
+.section-background {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover; background-position: center; background-attachment: fixed;
+    animation: kenBurns 40s infinite alternate;
+}
+@keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.1); } }
+.comic-panel {
+    z-index: 2; max-width: 800px; background: rgba(255,255,255,0.9);
+    padding: 40px; border-radius: 0; border: 5px solid black;
+    box-shadow: 10px 10px 0px var(--party-blue); color: black;
+}
+.theme-title { font-family: var(--bangers-font); font-size: 3.5rem; margin-bottom: 20px; color: var(--party-pink); }
+.animated-cake {
+    width: 100px; height: 100px; margin: 20px auto 0;
+    background: url('assets/elements/birthday-cake.gif') no-repeat center center;
+    background-size: contain;
+}
+/* Theme Specific Backgrounds */
+#harry-potter-section .section-background { background-image: url('https://i.imgur.com/6qXyU2x.jpg'); }
+#conan-section .section-background { background-image: url('https://i.imgur.com/dJkFlh2.jpg'); }
+#aot-section .section-background { background-image: url('https://i.imgur.com/8i2aBvj.jpg'); }
+
+/* 8. MEMORY GALLERY (MEME-IFIED) */
+.memory-gallery { padding: 100px 5%; background: #111; }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+.gallery-item {
+    background: white; cursor: pointer; position: relative;
+    border: 5px solid black; padding: 10px;
+    text-align: center; color: black;
+    transition: transform 0.3s;
+}
+.gallery-item:hover { transform: scale(1.05) rotate(2deg); }
+.gallery-item img { width: 100%; height: auto; display: block; }
+.meme-caption-top, .meme-caption-bottom {
+    font-family: var(--impact-font); font-size: 2rem; color: white;
+    -webkit-text-stroke: 2px black; position: absolute; left: 0; right: 0; padding: 0 10px;
+}
+.meme-caption-top { top: 20px; }
+.meme-caption-bottom { bottom: 20px; }
+.emoji-reactions { position: absolute; top: 15px; right: 15px; font-size: 2rem; }
+#lightbox-caption { font-size: 2rem; color: white; -webkit-text-stroke: 2px black; padding: 20px; text-align: center; }
+
+/* 9. VIDEO SHOWCASE */
+.video-showcase { padding: 100px 5%; background: #000; }
+.video-container { max-width: 900px; margin: 0 auto; position: relative; border: 5px solid var(--party-blue); }
+.video-container video { width: 100%; display: block; }
+.video-controls {
+    position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.6);
+    padding: 10px; display: flex; align-items: center; justify-content: center; gap: 20px;
+}
+.meme-btn {
+    font-family: var(--bangers-font); font-size: 1.2rem; padding: 10px 20px;
+    background: var(--party-yellow); color: black; border: 3px solid black;
+    cursor: pointer; transition: transform 0.2s;
+}
+.meme-btn:hover { transform: scale(1.1); }
+.meme-reactions { text-align: center; margin-top: 20px; }
+.reaction-btn {
+    background: none; border: none; font-size: 3rem; cursor: pointer;
+    transition: transform 0.2s;
+}
+.reaction-btn:hover { transform: scale(1.5) rotate(15deg); }
+
+/* 10. INTERACTIVE GAMES */
+.interactive-games { padding: 100px 5%; background: var(--dark-bg); }
+.games-container { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; }
+.game {
+    background: var(--party-purple); padding: 30px; text-align: center;
+    border: 4px solid black; box-shadow: 6px 6px 0 var(--party-pink);
+    flex-basis: 30%; min-width: 300px;
+}
+.game h4 { font-family: var(--bangers-font); font-size: 2rem; margin-bottom: 10px; }
+#hbd-button { margin: 15px 0; }
+#hbd-count { font-weight: bold; font-size: 1.5rem; }
+
+/* Candle Game Specific Styles */
+.cake-container {
+    position: relative;
+    width: 150px;
+    height: 120px;
+    margin: 20px auto 0;
+}
+.cake-base {
+    width: 100%;
+    height: 70px;
+    background: #saddlebrown;
+    position: absolute;
+    bottom: 0;
+    border-radius: 50% / 20px;
+    border: 3px solid black;
+}
+.cake-icing {
+    width: 100%;
+    height: 30px;
+    background: var(--party-pink);
+    position: absolute;
+    bottom: 50px;
+    border-radius: 50% / 15px;
+    border: 3px solid black;
+}
+.candle-stick {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 40px;
+    background: repeating-linear-gradient(45deg, #fff, #fff 5px, var(--party-blue) 5px, var(--party-blue) 10px);
+    border: 2px solid black;
+    border-radius: 5px 5px 0 0;
+}
+.wick {
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 5px;
+    background: #333;
+}
+.flame-wrapper {
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 30px;
+    cursor: pointer;
+}
+.flame-outer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffcc00;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker-outer 1s infinite alternate;
+    transform-origin: bottom;
+}
+.flame-inner {
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    width: 10px;
+    height: 20px;
+    background-color: #ff9900;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker-inner 0.9s infinite alternate;
+    transform-origin: bottom;
+}
+.flame-wrapper.blown-out .flame-outer,
+.flame-wrapper.blown-out .flame-inner {
+    animation: blow-out 0.5s forwards;
+}
+.smoke {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background: #888;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+}
+.flame-wrapper.blown-out .smoke {
+    animation: smoke-rise 2s forwards;
+}
+
+@keyframes flicker-outer {
+    0% { transform: scale(1, 1); }
+    50% { transform: scale(0.95, 1.05); }
+    100% { transform: scale(1.05, 0.95); }
+}
+@keyframes flicker-inner {
+    0% { transform: scale(1, 1) translateY(0); }
+    50% { transform: scale(1.05, 0.95) translateY(-5px); }
+    100% { transform: scale(0.95, 1.05) translateY(0); }
+}
+@keyframes blow-out {
+    from { opacity: 1; transform: scale(1) translateY(0); }
+    to { opacity: 0; transform: scale(0) translateY(-30px); }
+}
+@keyframes smoke-rise {
+    0% { opacity: 0; transform: translateY(0) scale(0.5) translateX(-50%); }
+    25% { opacity: 0.9; }
+    100% { opacity: 0; transform: translateY(-40px) scale(2) translateX(-50%); }
+}
+
+/* Balloon Pop Game Styles */
+.balloon-area {
+    position: relative;
+    height: 250px;
+    width: 100%;
+    margin-top: 20px;
+    overflow: hidden;
+    border: 2px dashed var(--party-yellow);
+    border-radius: 10px;
+}
+.game-balloon {
+    position: absolute;
+    width: 50px;
+    height: 65px;
+    background-color: var(--party-blue);
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    cursor: pointer;
+    bottom: -100px;
+    animation: float-up-wobble 10s linear infinite;
+    border: 2px solid black;
+}
+.game-balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 10px solid; /* Color will be inherited */
+}
+.game-balloon.popped {
+    animation: none;
+    opacity: 0;
+    transform: scale(1.5);
+    transition: all 0.2s ease-out;
+}
+.pop-confetti {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: red;
+    opacity: 0;
+}
+.pop-confetti.animate {
+    animation: pop-confetti-animation 1s ease-out forwards;
+}
+@keyframes float-up-wobble {
+    0% { bottom: -100px; transform: translateX(0); }
+    25% { transform: translateX(-15px) rotate(-5deg); }
+    50% { transform: translateX(0) rotate(0deg); }
+    75% { transform: translateX(15px) rotate(5deg); }
+    100% { bottom: 110%; transform: translateX(0); }
+}
+@keyframes pop-confetti-animation {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: translateY(50px) scale(0); }
+}
+
+/* 11. MEME MESSAGES */
+.meme-messages { padding: 100px 5%; background: #111; }
+.message-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.meme-box {
+    background: white; color: black; padding: 20px;
+    font-family: var(--impact-font); font-size: 1.8rem; text-align: center;
+    border: 4px solid black; transform: rotate(-2deg);
+}
+.meme-box:nth-child(2) { transform: rotate(3deg); background: var(--party-yellow); }
+.meme-box:nth-child(3) { transform: rotate(-4deg); background: var(--party-blue); }
+
+/* 12. GRAND FINALE */
+.grand-finale { padding: 100px 20px; text-align: center; background: #000; }
+.finale-title {
+    font-family: var(--bangers-font); font-size: 5rem; margin-bottom: 30px;
+    color: var(--party-pink); text-shadow: 5px 5px 0px var(--party-yellow);
+}
+
+/* 12.5 Music Section */
+.music-section {
+    padding: 100px 5%;
+    background: var(--dark-bg);
+    text-align: center;
+}
+.spotify-player-container {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    border: 5px solid var(--party-purple);
+    box-shadow: 8px 8px 0 var(--party-yellow);
+}
+.music-controls p {
+    font-size: 1.2rem;
+    color: var(--light-text);
+}
+
+/* 13. PARTY ELEMENTS & ANIMATIONS */
+#confetti-container {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 9999;
+}
+.confetti {
+    position: absolute; width: 10px; height: 10px;
+    background-color: var(--party-pink);
+    top: -20px;
+    animation: fall linear infinite;
+}
+@keyframes fall {
+    to { transform: translateY(105vh) rotate(720deg); }
+}
+.cartoon-cake-mascot {
+    position: fixed; width: 80px; height: 80px;
+    background: url('assets/elements/cake-mascot.png') no-repeat center center;
+    background-size: contain;
+    z-index: 10000; pointer-events: none;
+    transition: transform 0.1s ease-out;
+}
+#party-elements-container {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 9998;
+}
+.party-element {
+    position: absolute; bottom: -150px;
+    animation: floatUp linear forwards;
+}
+@keyframes floatUp { to { transform: translateY(-120vh) rotate(360deg); } }
+.party-element img { width: 100%; }
+
+/* Reveal on Scroll */
+.reveal-on-scroll { opacity: 0; transform: translateY(50px); transition: opacity 0.8s, transform 0.8s; }
+.reveal-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+/* 14. RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .main-birthday-greeting { font-size: 4rem; }
+    .section-title { font-size: 3rem; }
+    .theme-title { font-size: 2.5rem; }
+    .portal-title { font-size: 3rem; }
+    .games-container { flex-direction: column; align-items: center; }
+}
+/* 15. ANIMATED COUNTDOWN TIMER */
+.birthday-countdown {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    position: relative;
+}
+
+.timer-unit {
+    text-align: center;
+    position: relative;
+}
+
+.timer-value {
+    font-family: var(--bangers-font);
+    font-size: 4rem;
+    color: var(--party-yellow);
+    background: rgba(0,0,0,0.3);
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 3px solid var(--party-pink);
+    display: inline-block;
+    min-width: 80px;
+    text-align: center;
+    position: relative;
+    perspective: 500px;
+    text-shadow: 3px 3px 0 var(--party-purple);
+    animation: pulse 2s infinite;
+}
+
+.timer-label {
+    font-family: var(--comic-font);
+    font-size: 1.2rem;
+    color: white;
+    display: block;
+    margin-top: 5px;
+}
+
+.timer-value.flip {
+    animation: flip-animation 0.6s ease-in-out;
+}
+
+@keyframes flip-animation {
+    0% { transform: rotateX(0deg); }
+    50% { transform: rotateX(90deg); }
+    100% { transform: rotateX(0deg); }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 10px var(--party-yellow), 0 0 20px var(--party-yellow); }
+    50% { box-shadow: 0 0 25px var(--party-yellow), 0 0 40px var(--party-pink); }
+    100% { box-shadow: 0 0 10px var(--party-yellow), 0 0 20px var(--party-yellow); }
+}
+
+#timer-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.sparkle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--party-yellow);
+    border-radius: 50%;
+    opacity: 0;
+    animation: sparkle-animation 1s ease-out forwards;
+}
+
+@keyframes sparkle-animation {
+    0% { transform: scale(0) translateY(0); opacity: 1; }
+    100% { transform: scale(1.5) translateY(-50px); opacity: 0; }
+}
+
+/* Birthday Celebration Animation */
+.celebration {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10001;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.firework {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 1;
+    animation: firework-explode 1.2s ease-out forwards;
+}
+
+@keyframes firework-explode {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(30); opacity: 0; }
+}
+/* 16. DYNAMIC THEME STYLES */
+
+/* --- General Theme Transition --- */
+body, .themed-section .section-background, .themed-section .comic-panel {
+    transition: background-color 0.8s ease, color 0.8s ease;
+}
+
+/* --- Harry Potter Theme --- */
+body.theme-harry-potter {
+    --theme-primary: #7F0909; /* Gryffindor Scarlet */
+    --theme-secondary: #FFC500; /* Gryffindor Gold */
+    --theme-bg: #2c2c54; /* Deep Purple Night */
+    --theme-text: #f0e6d2; /* Parchment */
+    cursor: url('assets/cursors/wand.png'), auto;
+    background: var(--theme-bg) url('assets/backgrounds/hogwarts-silhouette.png') no-repeat bottom center;
+    background-size: 100% auto;
+    background-attachment: fixed;
+}
+.theme-harry-potter #harry-potter-section .section-background {
+    background-image: url('assets/backgrounds/great-hall.jpg');
+}
+.theme-harry-potter .main-birthday-greeting {
+    color: var(--theme-secondary);
+    text-shadow: 3px 3px 0px var(--theme-primary);
+}
+
+/* --- Detective Conan Theme --- */
+body.theme-conan {
+    --theme-primary: #0077be; /* Conan's Jacket Blue */
+    --theme-secondary: #e84118; /* Conan's Bowtie Red */
+    --theme-bg: #1e272e; /* Detective Noir Black */
+    --theme-text: #d2dae2; /* Foggy Gray */
+    cursor: url('assets/cursors/magnifying-glass.png'), auto;
+    background: var(--theme-bg) url('assets/backgrounds/case-files.png');
+    background-attachment: fixed;
+}
+.theme-conan #conan-section .section-background {
+    background-image: url('assets/backgrounds/baker-street.jpg');
+    filter: grayscale(50%);
+}
+.theme-conan .main-birthday-greeting {
+    color: var(--theme-primary);
+    text-shadow: 3px 3px 0px var(--theme-secondary);
+}
+
+/* --- Attack on Titan Theme --- */
+body.theme-attack-on-titan {
+    --theme-primary: #6a5a4b; /* Wall Texture Brown */
+    --theme-secondary: #a41e22; /* Blood Red Accent */
+    --theme-bg: #3d403a; /* Military Green */
+    --theme-text: #e9e4d8; /* Worn Parchment */
+    cursor: url('assets/cursors/survey-corps.png'), auto;
+    background: var(--theme-bg) url('assets/backgrounds/wall-texture.jpg');
+    background-attachment: fixed;
+}
+.theme-attack-on-titan #aot-section .section-background {
+    background-image: url('assets/backgrounds/shiganshina.jpg');
+}
+.theme-attack-on-titan .main-birthday-greeting {
+    color: var(--theme-text);
+    text-shadow: 3px 3px 0px var(--theme-secondary);
+}
+
+/* Theme-specific particle containers */
+#harry-potter-particles, #conan-particles, #aot-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9997;
+}
+
+.sparkle-particle, .fog-particle, .steam-particle {
+    position: absolute;
+    opacity: 0;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/* Harry Potter Sparkles */
+.sparkle-particle {
+    width: 10px;
+    height: 10px;
+    background: gold;
+    border-radius: 50%;
+    box-shadow: 0 0 10px gold;
+    animation-name: float;
+}
+
+/* Conan Fog */
+.fog-particle {
+    width: 200px;
+    height: 200px;
+    background: rgba(128, 128, 128, 0.2);
+    border-radius: 50%;
+    filter: blur(50px);
+    animation-name: drift;
+}
+
+/* AoT Steam */
+.steam-particle {
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    filter: blur(30px);
+    animation-name: float;
+}
+
+@keyframes float {
+    from { transform: translateY(100vh) scale(0); opacity: 1; }
+    to { transform: translateY(-100px) scale(1); opacity: 0; }
+}
+
+@keyframes drift {
+    from { transform: translateX(-200px) translateY(20vh); opacity: 0; }
+    50% { opacity: 1; }
+    to { transform: translateX(120vw) translateY(25vh); opacity: 0; }
+}
+
+/* 17. VISUAL FEEDBACK & EFFECTS */
+.pulse-effect {
+    animation: pulse-animation 0.5s ease-out;
+}
+@keyframes pulse-animation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+.fullscreen-pulse {
+    animation: fullscreen-pulse-animation 0.8s ease-out;
+}
+@keyframes fullscreen-pulse-animation {
+    0% { box-shadow: inset 0 0 0 0 rgba(255, 255, 255, 0); }
+    50% { box-shadow: inset 0 0 100px 50px rgba(255, 215, 0, 0.5); }
+    100% { box-shadow: inset 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+.emoji-particle {
+    position: fixed;
+    font-size: 2rem;
+    pointer-events: none;
+    z-index: 10001;
+    transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+
+/* 18. ENHANCED TIMER FEATURES */
+
+.timer-value {
+    position: relative;
+    perspective: 1000px;
+}
+
+.timer-value::before, .timer-value::after {
+    content: attr(data-value);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.3);
+    padding: 10px 15px;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    transition: transform 0.6s ease-in-out;
+}
+
+.timer-value::before {
+    transform-origin: bottom;
+    transform: rotateX(0deg);
+}
+
+.timer-value::after {
+    transform-origin: top;
+    transform: rotateX(180deg);
+}
+
+.timer-value.flip::before {
+    transform: rotateX(-180deg);
+}
+
+.timer-value.flip::after {
+    transform: rotateX(0deg);
+}
+
+.birthday-countdown.exciting .timer-value {
+    animation: pulse 0.5s infinite;
+}
+/* 19. EASTER EGG HINTS */
+.hint-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--party-pink);
+    color: white;
+    border: 2px solid black;
+    border-radius: 50%;
+    font-size: 2rem;
+    font-family: var(--bangers-font);
+    cursor: pointer;
+    z-index: 1001;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 3px 3px 0 black;
+}
+.hint-button:hover {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 5px 5px 0 var(--party-purple);
+}
+.hint-button.hidden {
+    transform: scale(0);
+    opacity: 0;
+}
+.hint-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10002;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+.hint-modal:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto;
+}
+.hint-modal-content {
+    background: var(--dark-bg);
+    padding: 30px;
+    border: 5px solid var(--party-yellow);
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    transform: scale(0.7);
+    transition: transform 0.3s;
+}
+.hint-modal:not(.hidden) .hint-modal-content {
+    transform: scale(1);
+}
+.hint-modal-content h2 {
+    font-family: var(--bangers-font);
+    font-size: 2.5rem;
+    color: var(--party-yellow);
+    margin-bottom: 15px;
+}
+.hint-modal-content ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+.hint-modal-content li {
+    font-family: var(--comic-font);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2.5rem;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.close-button:hover {
+    transform: scale(1.2);
+}
+/* Easter Egg Visual Cues */
+.easter-egg-glow {
+    animation: glow 2s infinite alternate;
+}
+@keyframes glow {
+    from {
+        box-shadow: 0 0 10px var(--party-blue), 0 0 20px var(--party-blue);
+    }
+    to {
+        box-shadow: 0 0 20px var(--party-yellow), 0 0 30px var(--party-yellow);
+    }
+}
+.main-birthday-greeting:hover {
+    cursor: pointer;
+    animation: shake 0.5s;
+}
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px) rotate(-2deg); }
+    75% { transform: translateX(5px) rotate(2deg); }
+}
+/* 20. BIRTHDAY SECRET EFFECT */
+.birthday-celebration-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 10003;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+}
+.birthday-celebration-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+.birthday-text-container {
+    position: relative;
+}
+.birthday-text {
+    font-family: var(--bangers-font);
+    font-size: 15vw;
+    color: transparent;
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff);
+    background-size: 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: rainbow-text-animation 5s linear infinite, birthday-text-zoom 6s forwards;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+@keyframes rainbow-text-animation {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+@keyframes birthday-text-zoom {
+    0% { transform: scale(0); opacity: 0; }
+    20% { transform: scale(1.2); opacity: 1; }
+    80% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(5); opacity: 0; }
+}
+.fireworks-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+.firework-particle {
+/* 21. HIDDEN PRESENT SECRET */
+.gallery-item .hidden-present {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url('assets/elements/gift-box.png') no-repeat center center;
+    background-size: contain;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: transform 0.3s, opacity 0.3s;
+}
+.gallery-item .hidden-present:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}
+.gallery-item .hidden-present.found {
+    animation: found-present-animation 1s forwards;
+}
+@keyframes found-present-animation {
+/* 22. SPECIAL BALLOON SECRET */
+.game-balloon.special {
+    background-color: gold;
+    animation-duration: 6s; /* Slower */
+}
+    0% { transform: scale(1); }
+/* 23. CAKE CANDLE SECRET */
+#candle-game .candle-stick {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+#candle-game .candle-stick:hover {
+    transform: scale(1.1);
+}
+#candle-game .candle-stick.clicked {
+    animation: candle-click-animation 0.5s;
+}
+@keyframes candle-click-animation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); background-color: var(--party-yellow); }
+    100% { transform: scale(1); }
+}
+/* 24. ALL SECRETS FOUND CELEBRATION */
+.all-secrets-found-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,223,0,0.8) 0%, rgba(255,105,180,0.8) 100%);
+    z-index: 10004;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    animation: all-secrets-fade-in 1s forwards;
+}
+@keyframes all-secrets-fade-in {
+    to { opacity: 1; }
+}
+.all-secrets-title {
+    font-family: var(--bangers-font);
+    font-size: 8vw;
+    color: white;
+    text-shadow: 5px 5px 0px black;
+    animation: all-secrets-bounce 1s ease-in-out;
+}
+@keyframes all-secrets-bounce {
+    0% { transform: scale(0); }
+    80% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+.all-secrets-subtitle {
+    font-family: var(--comic-font);
+    font-size: 3vw;
+    color: white;
+    margin-top: 20px;
+}
+    50% { transform: scale(1.5) rotate(15deg); }
+    100% { transform: scale(0); opacity: 0; }
+}
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    opacity: 0;
+    animation: firework-particle-animation 1.5s ease-out forwards;
+}
+@keyframes firework-particle-animation {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(1) translateY(var(--y-end)) translateX(var(--x-end)); opacity: 0; }
+}
+.firework-particle {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10004;
+    opacity: 0;
+    animation: firework-particle-animation 1.5s ease-out forwards;
+}
+@keyframes firework-particle-animation {
+    0% { opacity: 1; transform: scale(1) translate(0, 0); }
+    100% { opacity: 0; transform: scale(0) translate(var(--x-end), var(--y-end)); }
+}
+.achievement-unlocked {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(45deg, var(--party-yellow), var(--party-pink));
+    color: black;
+    padding: 15px 30px;
+    font-family: var(--bangers-font);
+    font-size: 2rem;
+    border: 3px solid black;
+    border-radius: 15px;
+    z-index: 10005;
+    animation: achievement-animation 4s forwards;
+}
+@keyframes achievement-animation {
+    0% { top: -100px; opacity: 0; }
+    20% { top: 20px; opacity: 1; }
+    80% { top: 20px; opacity: 1; }
+    100% { top: -100px; opacity: 0; }
+}
+.visual-sound-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 5px;
+    z-index: 10002;
+    pointer-events: none;
+}
+.visual-sound-bar {
+    width: 20px;
+    background-color: var(--party-blue);
+    animation: sound-bar-dance 1s infinite alternate;
+}
+@keyframes sound-bar-dance {
+    from { height: 5px; }
+    to { height: 50px; }
+}
+.rainbow-text-animated {
+    animation: rainbow-text-animation 2s linear infinite;
+}
+.gift-box-animation {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 10005;
+    animation: gift-box-appear 0.5s forwards;
+}
+.gift-box-animation .lid {
+    width: 150px;
+    height: 40px;
+    background: var(--party-pink);
+    border: 3px solid black;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.5s ease-in-out;
+}
+.gift-box-animation .box {
+    width: 140px;
+    height: 100px;
+    background: var(--party-yellow);
+    border: 3px solid black;
+    margin: 0 auto;
+}
+.gift-box-animation.open .lid {
+    transform: translateY(-50px) rotate(20deg);
+}
+@keyframes gift-box-appear {
+    to { transform: translate(-50%, -50%) scale(1); }
+}
+.golden-explosion-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 1px;
+    height: 1px;
+    z-index: 10005;
+}
+.golden-particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: gold;
+    border-radius: 50%;
+    animation: golden-explode 1s forwards;
+}
+@keyframes golden-explode {
+    0% { transform: rotate(var(--angle)) translateX(0) scale(1); opacity: 1; }
+    100% { transform: rotate(var(--angle)) translateX(200px) scale(0); opacity: 0; }
+}
+.theme-fusion-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10004;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    animation: fusion-fade-out 4s forwards;
+}
+.fusion-glow {
+    position: absolute;
+    width: 33.33%;
+    height: 100%;
+    opacity: 0;
+}
+.fusion-glow.harry-potter {
+    left: 0;
+    background: radial-gradient(circle at 20% 50%, #7F0909, transparent 70%);
+    animation: fusion-glow-1 3s forwards;
+}
+.fusion-glow.conan {
+    left: 33.33%;
+    background: radial-gradient(circle at 50% 50%, #0077be, transparent 70%);
+    animation: fusion-glow-2 3s forwards;
+}
+.fusion-glow.attack-on-titan {
+    left: 66.66%;
+    background: radial-gradient(circle at 80% 50%, #a41e22, transparent 70%);
+    animation: fusion-glow-3 3s forwards;
+}
+@keyframes fusion-glow-1 { 0% { opacity: 0; transform: translateX(-100%); } 100% { opacity: 0.7; transform: translateX(0); } }
+@keyframes fusion-glow-2 { 0% { opacity: 0; transform: translateY(-100%); } 100% { opacity: 0.7; transform: translateY(0); } }
+@keyframes fusion-glow-3 { 0% { opacity: 0; transform: translateX(100%); } 100% { opacity: 0.7; transform: translateX(0); } }
+@keyframes fusion-fade-out { 0% { opacity: 1; } 80% { opacity: 1; } 100% { opacity: 0; } }
+.candle-sparkle-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10001;
+    pointer-events: none;
+}
+.bonus-section {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+/* 25. FLOATING MUSIC PLAYER */
+.floating-music-player {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 300px;
+    background: var(--dark-bg);
+    border: 3px solid var(--party-purple);
+    border-radius: 15px;
+    z-index: 1002;
+    box-shadow: 5px 5px 0px black;
+    transition: transform 0.3s ease-in-out;
+}
+.floating-music-player.minimized {
+    transform: translateY(calc(100% - 45px));
+}
+.player-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: var(--party-purple);
+    color: white;
+    font-family: var(--bangers-font);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+#toggle-player-btn {
+    background: none;
+    border: 2px solid white;
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+}
+.player-body {
+    padding: 10px;
+}
+.spotify-embed-wrapper {
+    position: relative;
+}
+.play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+}
+#manual-play-btn {
+    font-size: 3rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    text-shadow: 0 0 10px var(--party-yellow);
+}
+.volume-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+#volume-slider {
+    width: 150px;
+}
